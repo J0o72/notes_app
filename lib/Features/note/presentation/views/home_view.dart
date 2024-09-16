@@ -6,10 +6,34 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
+    return SafeArea(
       child: Scaffold(
-        body: HomeViewBody(),
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.teal,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(40),
+          ),
+          onPressed: () {
+            showModalBottomSheet(
+              context: context,
+              builder: (context) {
+                return const CustomModalBottomSheet();
+              },
+            );
+          },
+          child: const Icon(Icons.add),
+        ),
+        body: const HomeViewBody(),
       ),
     );
+  }
+}
+
+class CustomModalBottomSheet extends StatelessWidget {
+  const CustomModalBottomSheet({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
   }
 }
