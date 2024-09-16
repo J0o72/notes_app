@@ -3,7 +3,10 @@ import 'package:notes_app/core/utils/styles.dart';
 import 'package:notes_app/core/widgets/custom_icon_button.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({super.key});
+  const CustomAppBar({super.key, required this.text, required this.icon});
+
+  final String text;
+  final IconData icon;
 
   @override
   Widget build(BuildContext context) {
@@ -11,10 +14,12 @@ class CustomAppBar extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-          "Notes",
+          text,
           style: Styles.textStyle24,
         ),
-        const CustomIconButton(),
+        CustomIconButton(
+          icon: icon,
+        ),
       ],
     );
   }
