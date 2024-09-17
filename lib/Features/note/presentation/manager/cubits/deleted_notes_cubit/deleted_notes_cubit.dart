@@ -11,6 +11,7 @@ class DeletedNotesCubit extends Cubit<DeletedNotesState> {
   DeletedNotesCubit() : super(DeletedNotesInitial());
 
   Color color = const Color(0xff77E4C8);
+  List<NoteModel>? notes;
 
   void addDeletedNote(NoteModel note) async {
     note.color = color.value;
@@ -22,5 +23,11 @@ class DeletedNotesCubit extends Cubit<DeletedNotesState> {
     } catch (e) {
       emit(DeletedNotesFailure(errorMessage: e.toString()));
     }
+  }
+
+  void fetchAllDeletedNotes() {
+    var notesBox = Hive.box<NoteModel>(kDeletedNotesBox);
+    notes = notesBox.values.toList();
+    emit(DeletedNotesSuccess());
   }
 }
