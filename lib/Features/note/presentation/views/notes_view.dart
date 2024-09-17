@@ -10,7 +10,7 @@ class NotesView extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.teal,
+          backgroundColor: const Color(0xff478CCF),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(40),
           ),

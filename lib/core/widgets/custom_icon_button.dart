@@ -23,7 +23,7 @@ class CustomIconButton extends StatelessWidget {
         onPressed: onPressed,
         icon: Icon(
           icon,
-          size: 24,
+          size: 30,
         ),
       ),
     );
