@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:notes_app/Features/note/presentation/manager/cubits/notes_cubit/notes_cubit.dart';
+import 'package:notes_app/Features/note/presentation/views/deleted_notes_view.dart';
 import 'package:notes_app/Features/note/presentation/views/widgets/notes_list_view.dart';
 import 'package:notes_app/core/widgets/custom_app_bar.dart';
 
@@ -29,7 +30,14 @@ class _NotesViewBodyState extends State<NotesViewBody> {
             height: 16,
           ),
           CustomAppBar(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const DeletedNotesView(),
+                ),
+              );
+            },
             text: 'Notes',
             icon: Icons.delete_sweep_rounded,
           ),

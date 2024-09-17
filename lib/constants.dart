@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 const String kNotesBox = 'notes_box';
+const String kDeletedNotesBox = 'delete_notes_box';
+
 List<Color> kColors = const [
   Color(0xff77E4C8),
   Color(0xff36C2CE),
