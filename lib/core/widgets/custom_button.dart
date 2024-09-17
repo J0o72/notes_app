@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:notes_app/core/utils/styles.dart';
 
 class CustomButton extends StatelessWidget {
-  const CustomButton({super.key, this.onTap});
+  const CustomButton({super.key, this.onTap, required this.isLoading});
 
   final void Function()? onTap;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -18,13 +19,21 @@ class CustomButton extends StatelessWidget {
           color: Colors.teal,
         ),
         child: Center(
-          child: Text(
-            "Add",
-            style: Styles.textStyle18.copyWith(
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
+          child: isLoading
+              ? const SizedBox(
+                  height: 20,
+                  width: 20,
+                  child: CircularProgressIndicator(
+                    color: Colors.black,
+                  ),
+                )
+              : Text(
+                  "Add",
+                  style: Styles.textStyle18.copyWith(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
         ),
       ),
     );
