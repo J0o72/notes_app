@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:notes_app/Features/note/presentation/manager/cubits/add_note_cubit/add_note_cubit.dart';
+import 'package:notes_app/Features/note/presentation/manager/cubits/notes_cubit/notes_cubit.dart';
 import 'package:notes_app/Features/note/presentation/manager/models/note_model.dart';
 import 'package:notes_app/core/widgets/custom_button.dart';
 import 'package:notes_app/core/widgets/custom_text_field.dart';
@@ -69,6 +70,7 @@ class _ModalBottomSheetContentsState extends State<ModalBottomSheetContents> {
                         date: formattedCurrentDate,
                         color: Colors.blue.value);
                     BlocProvider.of<AddNoteCubit>(context).addNote(note);
+                    BlocProvider.of<NotesCubit>(context).fetchAllNotes();
                   } else {
                     autoValidateMode = AutovalidateMode.always;
                     setState(() {});
