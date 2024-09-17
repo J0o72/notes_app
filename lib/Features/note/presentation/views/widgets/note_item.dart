@@ -26,7 +26,7 @@ class NoteItem extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.only(left: 16, top: 16, bottom: 16),
           decoration: BoxDecoration(
-            color: Colors.teal,
+            color: Color(note.color),
             borderRadius: BorderRadius.circular(16),
           ),
           child: Column(

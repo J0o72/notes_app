@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:notes_app/Features/note/presentation/manager/cubits/add_note_cubit/add_note_cubit.dart';
 import 'package:notes_app/Features/note/presentation/manager/cubits/notes_cubit/notes_cubit.dart';
 import 'package:notes_app/Features/note/presentation/manager/models/note_model.dart';
+import 'package:notes_app/Features/note/presentation/views/widgets/color_item_list_view.dart';
 import 'package:notes_app/core/widgets/custom_button.dart';
 import 'package:notes_app/core/widgets/custom_text_field.dart';
 
@@ -49,6 +50,10 @@ class _ModalBottomSheetContentsState extends State<ModalBottomSheetContents> {
             hintText: 'Content',
             maxLines: 5,
           ),
+          const SizedBox(
+            height: 32,
+          ),
+          const ColorItemsListView(),
           const SizedBox(
             height: 32,
           ),

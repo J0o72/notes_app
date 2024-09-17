@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 abstract class Styles {
   static TextStyle textStyle18 = TextStyle(
-    color: Colors.black.withOpacity(0.4),
+    color: Colors.white.withOpacity(0.6),
     fontSize: 18,
   );
 
   static TextStyle textStyle20 = const TextStyle(
     fontSize: 20,
-    color: Colors.black,
+    color: Colors.white,
   );
 
   static TextStyle textStyle24 = const TextStyle(
@@ -17,6 +17,6 @@ abstract class Styles {
 
   static TextStyle textStyle26 = const TextStyle(
     fontSize: 26,
-    color: Colors.black,
+    color: Colors.white,
   );
 }
