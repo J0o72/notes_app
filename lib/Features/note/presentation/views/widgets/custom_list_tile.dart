@@ -7,10 +7,12 @@ class CustomListTile extends StatelessWidget {
     super.key,
     required this.title,
     required this.subTitle,
+    required this.onPressed,
   });
 
   final String title;
   final String subTitle;
+  final void Function() onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +29,7 @@ class CustomListTile extends StatelessWidget {
         style: Styles.textStyle18,
       ),
       trailing: IconButton(
-        onPressed: () {},
+        onPressed: onPressed,
         icon: const Icon(
           FontAwesomeIcons.trash,
           size: 24,

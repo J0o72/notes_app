@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/Features/note/presentation/manager/cubits/notes_cubit/notes_cubit.dart';
 import 'package:notes_app/Features/note/presentation/manager/models/note_model.dart';
 import 'package:notes_app/Features/note/presentation/views/notes_edit_view.dart';
 import 'package:notes_app/Features/note/presentation/views/widgets/custom_list_tile.dart';
@@ -29,6 +31,10 @@ class NoteItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               CustomListTile(
+                onPressed: () {
+                  note.delete();
+                  BlocProvider.of<NotesCubit>(context).fetchAllNotes();
+                },
                 title: note.title,
                 subTitle: note.subTitle,
               ),
