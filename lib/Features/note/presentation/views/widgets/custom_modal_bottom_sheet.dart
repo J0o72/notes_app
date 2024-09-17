@@ -10,10 +10,21 @@ class CustomModalBottomSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => AddNoteCubit(),
-      child: const Padding(
-        padding: EdgeInsets.symmetric(horizontal: 24),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 24),
         child: SingleChildScrollView(
-          child: ModalBottomSheetContents(),
+          child: BlocConsumer<AddNoteCubit, AddNoteState>(
+            listener: (context, state) {
+              if (state is AddNoteSuccess) {
+                Navigator.pop(context);
+              }
+
+              if (state is AddNoteFailure) {}
+            },
+            builder: (context, state) {
+              return const ModalBottomSheetContents();
+            },
+          ),
         ),
       ),
     );
