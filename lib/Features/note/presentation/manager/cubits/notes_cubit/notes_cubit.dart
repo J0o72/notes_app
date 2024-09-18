@@ -14,4 +14,15 @@ class NotesCubit extends Cubit<NotesState> {
     notes = notesBox.values.toList();
     emit(NotesSuccess());
   }
+
+  void restoreDeletedNote(NoteModel note) async {
+    emit(NotesLoading());
+    try {
+      var restoredeletedNoteBox = Hive.box<NoteModel>(kNotesBox);
+      await restoredeletedNoteBox.add(note);
+      emit(NotesSuccess());
+    } catch (e) {
+      emit(NotesFailure(errorMessage: e.toString()));
+    }
+  }
 }

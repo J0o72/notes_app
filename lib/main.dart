@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:notes_app/Features/note/presentation/manager/cubits/deleted_notes_cubit/deleted_notes_cubit.dart';
 import 'package:notes_app/Features/note/presentation/manager/cubits/notes_cubit/notes_cubit.dart';
 import 'package:notes_app/Features/note/presentation/manager/models/note_model.dart';
 import 'package:notes_app/Features/note/presentation/views/notes_view.dart';
@@ -22,8 +23,15 @@ class NotesApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => NotesCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => NotesCubit(),
+        ),
+        BlocProvider(
+          create: (context) => DeletedNotesCubit(),
+        ),
+      ],
       child: MaterialApp(
         theme: ThemeData(
           brightness: Brightness.dark,

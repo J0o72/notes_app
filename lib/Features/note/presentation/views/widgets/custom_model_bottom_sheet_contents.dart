@@ -60,6 +60,7 @@ class _ModalBottomSheetContentsState extends State<ModalBottomSheetContents> {
           BlocBuilder<AddNoteCubit, AddNoteState>(
             builder: (context, state) {
               return CustomButton(
+                buttonText: 'Add',
                 isLoading: state is AddNoteLoading ? true : false,
                 onTap: () {
                   if (formKey.currentState!.validate()) {

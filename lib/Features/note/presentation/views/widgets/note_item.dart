@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/Features/note/presentation/manager/cubits/deleted_notes_cubit/deleted_notes_cubit.dart';
 import 'package:notes_app/Features/note/presentation/manager/cubits/notes_cubit/notes_cubit.dart';
 import 'package:notes_app/Features/note/presentation/manager/models/note_model.dart';
 import 'package:notes_app/Features/note/presentation/views/notes_edit_view.dart';
@@ -7,9 +8,17 @@ import 'package:notes_app/Features/note/presentation/views/widgets/custom_list_t
 import 'package:notes_app/core/utils/styles.dart';
 
 class NoteItem extends StatelessWidget {
-  const NoteItem({super.key, required this.note});
+  const NoteItem(
+      {super.key,
+      required this.note,
+      this.icon,
+      this.size,
+      required this.onPressed});
 
   final NoteModel note;
+  final IconData? icon;
+  final double? size;
+  final void Function() onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -33,10 +42,9 @@ class NoteItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               CustomListTile(
-                onPressed: () {
-                  note.delete();
-                  BlocProvider.of<NotesCubit>(context).fetchAllNotes();
-                },
+                size: size,
+                icon: icon,
+                onPressed: onPressed,
                 title: note.title,
                 subTitle: note.subTitle,
               ),

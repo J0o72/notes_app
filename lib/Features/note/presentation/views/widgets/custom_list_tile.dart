@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:notes_app/core/utils/styles.dart';
 
 class CustomListTile extends StatelessWidget {
@@ -8,11 +7,15 @@ class CustomListTile extends StatelessWidget {
     required this.title,
     required this.subTitle,
     required this.onPressed,
+    this.icon,
+    this.size,
   });
 
   final String title;
   final String subTitle;
   final void Function() onPressed;
+  final IconData? icon;
+  final double? size;
 
   @override
   Widget build(BuildContext context) {
@@ -30,10 +33,10 @@ class CustomListTile extends StatelessWidget {
       ),
       trailing: IconButton(
         onPressed: onPressed,
-        icon: const Icon(
-          FontAwesomeIcons.trash,
-          size: 24,
-          color: Colors.black,
+        icon: Icon(
+          icon,
+          size: size,
+          color: Colors.white,
         ),
       ),
     );

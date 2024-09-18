@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:notes_app/Features/note/presentation/manager/cubits/deleted_notes_cubit/deleted_notes_cubit.dart';
 import 'package:notes_app/Features/note/presentation/manager/cubits/notes_cubit/notes_cubit.dart';
 import 'package:notes_app/Features/note/presentation/views/deleted_notes_view.dart';
 import 'package:notes_app/Features/note/presentation/views/widgets/notes_list_view.dart';
@@ -31,6 +31,8 @@ class _NotesViewBodyState extends State<NotesViewBody> {
           ),
           CustomAppBar(
             onPressed: () {
+              BlocProvider.of<DeletedNotesCubit>(context)
+                  .fetchAllDeletedNotes();
               Navigator.push(
                 context,
                 MaterialPageRoute(

@@ -1,5 +1,4 @@
-import 'dart:ui';
-
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:notes_app/Features/note/presentation/manager/models/note_model.dart';
@@ -10,17 +9,16 @@ part 'deleted_notes_state.dart';
 class DeletedNotesCubit extends Cubit<DeletedNotesState> {
   DeletedNotesCubit() : super(DeletedNotesInitial());
 
-  Color color = const Color(0xff77E4C8);
   List<NoteModel>? notes;
 
   void addDeletedNote(NoteModel note) async {
-    note.color = color.value;
-    emit(DeletedNotesSuccess());
+    emit(DeletedNotesLoading());
     try {
-      var notesBox = Hive.box<NoteModel>(kDeletedNotesBox);
-      await notesBox.add(note);
+      var deletedNoteBox = Hive.box<NoteModel>(kDeletedNotesBox);
+      await deletedNoteBox.add(note);
       emit(DeletedNotesSuccess());
     } catch (e) {
+      debugPrint('error => ${e.toString()}');
       emit(DeletedNotesFailure(errorMessage: e.toString()));
     }
   }
@@ -28,6 +26,12 @@ class DeletedNotesCubit extends Cubit<DeletedNotesState> {
   void fetchAllDeletedNotes() {
     var notesBox = Hive.box<NoteModel>(kDeletedNotesBox);
     notes = notesBox.values.toList();
+    emit(DeletedNotesSuccess());
+  }
+
+  void emptyDeletedNotes() {
+    var notesBox = Hive.box<NoteModel>(kDeletedNotesBox);
+    notesBox.deleteAll(notesBox.keys);
     emit(DeletedNotesSuccess());
   }
 }
