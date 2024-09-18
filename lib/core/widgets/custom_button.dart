@@ -63,7 +63,7 @@ class DeleteAllButton extends StatelessWidget {
         ),
         child: Center(
           child: Text(
-            'Delete All',
+            'Clear trash',
             style: Styles.textStyle18.copyWith(
               color: Colors.black,
               fontWeight: FontWeight.bold,

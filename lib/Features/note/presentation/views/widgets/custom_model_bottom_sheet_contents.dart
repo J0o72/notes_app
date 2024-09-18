@@ -6,7 +6,7 @@ import 'package:notes_app/Features/note/presentation/manager/cubits/notes_cubit/
 import 'package:notes_app/Features/note/presentation/manager/models/note_model.dart';
 import 'package:notes_app/Features/note/presentation/views/widgets/color_item_list_view.dart';
 import 'package:notes_app/core/widgets/custom_button.dart';
-import 'package:notes_app/core/widgets/custom_text_field.dart';
+import 'package:notes_app/core/widgets/custom_text_form_field.dart';
 
 class ModalBottomSheetContents extends StatefulWidget {
   const ModalBottomSheetContents({
